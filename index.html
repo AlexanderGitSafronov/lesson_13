@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myСlosure(){
+            let sum = 0;
+            return function(arg){
+                sum += arg;
+                return sum;
+            }
+        }
+        let closer = myСlosure();
+        console.log(closer(5));
+        console.log(closer(20));
+        console.log(closer(20));
+
+
+
+
+        function createCaunter(item){
+            let counter = 1;
+            return function(){
+                return counter++;
+            }
+        }
+        let facebook = createCaunter();
+        console.log(facebook());
+        console.log(facebook());
+        console.log(facebook());
+    </script>
+</body>
+</html>
