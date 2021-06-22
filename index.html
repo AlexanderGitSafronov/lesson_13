@@ -23,16 +23,46 @@
 
 
 
-        function createCaunter(item){
-            let counter = 1;
-            return function(){
-                return counter++;
-            }
-        }
-        let facebook = createCaunter();
-        console.log(facebook());
-        console.log(facebook());
-        console.log(facebook());
+     function createCaunter() {
+     let initialCount = 1;
+     let counter = initialCount;
+
+     const fnCounter = function() {
+       ++counter;
+       return counter; 
+     }
+     
+     fnCounter.updateInitial = function(a) {
+       initialCount = a;
+       return counter = initialCount
+     };
+       
+     fnCounter.reset = function(){
+       initialCount = 1;
+       counter = initialCount;
+       return counter
+     };
+     fnCounter.rangeCount = function(a){ 
+       return counter += a
+     };
+
+     return fnCounter;
+    };
+
+    let facebook = createCaunter();
+
+    console.log('+1',facebook()) 
+    console.log('+5',facebook.rangeCount(5)) 
+    console.log('reset',facebook.reset()) 
+    console.log('update initial',facebook.updateInitial(33)) 
+  
+    console.log('+1',facebook())
+    console.log('+1',facebook())
+    console.log('reset',facebook.reset()) 
+    console.log('+1',facebook.rangeCount(5))
+    console.log('reset',facebook.reset()) 
+    console.log('+1',facebook())
+       
     </script>
 </body>
 </html>
